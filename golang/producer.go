@@ -33,6 +33,7 @@ import (
 
 type Producer interface {
 	Send(context.Context, *Message) ([]*SendReceipt, error)
+	SendBatch(context.Context, []*Message) ([]*SendReceipt, error)
 	SendWithTransaction(context.Context, *Message, Transaction) ([]*SendReceipt, error)
 	SendAsync(context.Context, *Message, func(context.Context, []*SendReceipt, error))
 	SendBatchAsync(context.Context, []*Message, func(context.Context, []*SendReceipt, error))
@@ -346,6 +347,18 @@ func (p *defaultProducer) Send(ctx context.Context, msg *Message) ([]*SendReceip
 	}}
 	return p.send0(ctx, msgs, false)
 }
+func (p *defaultProducer) SendBatch(ctx context.Context, messages *Message) ([]*SendReceipt, error) {
+	if !p.isOn() {
+		return nil, fmt.Errorf("producer is not running")
+	}
+	msgs := make([]*UnifiedMessage, 0)
+	for _, message := range messages {
+		msgs = append(msgs, &UnifiedMessage{
+			msg: message,
+		})
+	}
+	return p.send0(ctx, msgs, false)
+}
 
 func (p *defaultProducer) SendAsync(ctx context.Context, msg *Message, f func(context.Context, []*SendReceipt, error)) {
 	if !p.isOn() {
@@ -363,7 +376,7 @@ func (p *defaultProducer) SendBatchAsync(ctx context.Context, messages []*Messag
 	if !p.isOn() {
 		f(ctx, nil, fmt.Errorf("producer is not running"))
 	}
-	
+
 	go func() {
 		msgs := make([]*UnifiedMessage, 0)
 		for _, message := range messages {
