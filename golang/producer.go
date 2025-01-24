@@ -363,6 +363,7 @@ func (p *defaultProducer) SendBatchAsync(ctx context.Context, messages []*Messag
 	if !p.isOn() {
 		f(ctx, nil, fmt.Errorf("producer is not running"))
 	}
+	
 	go func() {
 		msgs := make([]*UnifiedMessage, 0)
 		for _, message := range messages {
