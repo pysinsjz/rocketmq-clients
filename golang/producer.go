@@ -35,6 +35,7 @@ type Producer interface {
 	Send(context.Context, *Message) ([]*SendReceipt, error)
 	SendWithTransaction(context.Context, *Message, Transaction) ([]*SendReceipt, error)
 	SendAsync(context.Context, *Message, func(context.Context, []*SendReceipt, error))
+	SendBatchAsync(context.Context, []*Message, func(context.Context, []*SendReceipt, error))
 	BeginTransaction() Transaction
 	Start() error
 	GracefulStop() error
@@ -354,6 +355,16 @@ func (p *defaultProducer) SendAsync(ctx context.Context, msg *Message, f func(co
 		msgs := []*UnifiedMessage{{
 			msg: msg,
 		}}
+		resp, err := p.send0(ctx, msgs, false)
+		f(ctx, resp, err)
+	}()
+}
+func (p *defaultProducer) SendBatchAsync(ctx context.Context, msgs []*Message, f func(context.Context, []*SendReceipt, error)) {
+	if !p.isOn() {
+		f(ctx, nil, fmt.Errorf("producer is not running"))
+	}
+	go func() {
+		msgs := []*UnifiedMessage{msgs...}
 		resp, err := p.send0(ctx, msgs, false)
 		f(ctx, resp, err)
 	}()
