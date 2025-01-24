@@ -19,7 +19,7 @@ import { hostname } from 'node:os';
 
 /**
  * Client Identifier Helper
- * https://github.com/apache/rocketmq-clients/blob/master/docs/design.md#client-identifier
+ * https://github.com/pysinsjz/rocketmq-clients/blob/master/docs/design.md#client-identifier
  */
 export class ClientId {
   static #hostname = hostname();

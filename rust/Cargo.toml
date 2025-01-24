@@ -26,7 +26,7 @@ authors = [
 
 license = "Apache-2.0"
 readme = "./README.md"
-repository = "https://github.com/apache/rocketmq-clients/tree/master/rust"
+repository = "https://github.com/pysinsjz/rocketmq-clients/tree/master/rust"
 documentation = "https://docs.rs/rocketmq"
 description = "Rust client for Apache RocketMQ"
 keywords = ["rocketmq", "api", "client", "sdk", "grpc"]

@@ -60,7 +60,7 @@ const MAX_UINT16 = 0xFFFF;
 
 /**
  * Message Identifier
- * https://github.com/apache/rocketmq-clients/blob/master/docs/message_id.md
+ * https://github.com/pysinsjz/rocketmq-clients/blob/master/docs/message_id.md
  */
 export class MessageIdFactory {
   // static #hostname = hostname();

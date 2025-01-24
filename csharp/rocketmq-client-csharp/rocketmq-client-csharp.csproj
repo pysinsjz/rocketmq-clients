@@ -12,8 +12,8 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Description>.NET Client for Apache RocketMQ</Description>
-        <PackageProjectUrl>https://github.com/apache/rocketmq-clients</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/apache/rocketmq-clients</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/pysinsjz/rocketmq-clients</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/pysinsjz/rocketmq-clients</RepositoryUrl>
         <PackageIcon>logo.png</PackageIcon>
 
         <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>

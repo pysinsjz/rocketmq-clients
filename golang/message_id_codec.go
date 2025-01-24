@@ -29,7 +29,7 @@ import (
 
 	uberatomic "go.uber.org/atomic"
 
-	"github.com/apache/rocketmq-clients/golang/v5/pkg/utils"
+	"github.com/pysinsjz/rocketmq-clients/golang/v5/pkg/utils"
 )
 
 /**

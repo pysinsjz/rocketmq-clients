@@ -53,5 +53,5 @@ git clone --recursive git@github.com:apache/rocketmq-clients.git
 
 [license-image]: https://img.shields.io/badge/license-Apache%202-4EB1BA.svg
 [license-url]: https://www.apache.org/licenses/LICENSE-2.0.html
-[build-image]: https://github.com/apache/rocketmq-clients/actions/workflows/build.yml/badge.svg
-[build-url]: https://github.com/apache/rocketmq-clients/actions/workflows/build.yml
+[build-image]: https://github.com/pysinsjz/rocketmq-clients/actions/workflows/build.yml/badge.svg
+[build-url]: https://github.com/pysinsjz/rocketmq-clients/actions/workflows/build.yml

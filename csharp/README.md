@@ -2,7 +2,7 @@
 
 [![NuGet Gallery][nuget-image]][nuget-url]
 
-English | [简体中文](https://github.com/apache/rocketmq-clients/blob/master/csharp/README-CN.md)
+English | [简体中文](https://github.com/pysinsjz/rocketmq-clients/blob/master/csharp/README-CN.md)
 | [RocketMQ Website](https://rocketmq.apache.org/)
 
 ## Supported .NET Versions

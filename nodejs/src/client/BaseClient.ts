@@ -109,7 +109,7 @@ export abstract class BaseClient {
 
   /**
    * Startup flow
-   * https://github.com/apache/rocketmq-clients/blob/master/docs/workflow.md#startup
+   * https://github.com/pysinsjz/rocketmq-clients/blob/master/docs/workflow.md#startup
    */
   async startup() {
     this.logger.info('Begin to startup the rocketmq client, clientId=%s', this.clientId);
@@ -273,7 +273,7 @@ export abstract class BaseClient {
   }
 
   getRequestMetadata() {
-    // https://github.com/apache/rocketmq-clients/blob/master/docs/transport.md
+    // https://github.com/pysinsjz/rocketmq-clients/blob/master/docs/transport.md
     // Transport Header
     const metadata = new Metadata();
     // version of protocol
