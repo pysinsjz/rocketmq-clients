@@ -347,7 +347,7 @@ func (p *defaultProducer) Send(ctx context.Context, msg *Message) ([]*SendReceip
 	}}
 	return p.send0(ctx, msgs, false)
 }
-func (p *defaultProducer) SendBatch(ctx context.Context, messages *Message) ([]*SendReceipt, error) {
+func (p *defaultProducer) SendBatch(ctx context.Context, messages []*Message) ([]*SendReceipt, error) {
 	if !p.isOn() {
 		return nil, fmt.Errorf("producer is not running")
 	}
