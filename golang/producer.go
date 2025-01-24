@@ -359,12 +359,17 @@ func (p *defaultProducer) SendAsync(ctx context.Context, msg *Message, f func(co
 		f(ctx, resp, err)
 	}()
 }
-func (p *defaultProducer) SendBatchAsync(ctx context.Context, msgs []*Message, f func(context.Context, []*SendReceipt, error)) {
+func (p *defaultProducer) SendBatchAsync(ctx context.Context, messages []*Message, f func(context.Context, []*SendReceipt, error)) {
 	if !p.isOn() {
 		f(ctx, nil, fmt.Errorf("producer is not running"))
 	}
 	go func() {
-		msgs := []*UnifiedMessage{msgs...}
+		msgs := make([]*UnifiedMessage, 0)
+		for _, message := range messages {
+			msgs = append(msgs, &UnifiedMessage{
+				msg: message,
+			})
+		}
 		resp, err := p.send0(ctx, msgs, false)
 		f(ctx, resp, err)
 	}()
