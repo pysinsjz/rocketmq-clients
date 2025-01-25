@@ -311,7 +311,10 @@ func (p *defaultProducer) send0(ctx context.Context, msgs []*UnifiedMessage, txE
 	if messageType == v2.MessageType_FIFO {
 		messageGroup = pubMessages[0].msg.GetMessageGroup()
 		for _, pubMessage := range pubMessages {
-			if pubMessage.msg.GetMessageGroup() != messageGroup {
+			if pubMessage.msg.GetMessageGroup() == nil || messageGroup == nil{
+				return nil, fmt.Errorf("fifo messages to send have different message groups have nil message group")
+			}
+			if *pubMessage.msg.GetMessageGroup() != *messageGroup {
 				return nil, fmt.Errorf("fifo messages to send have different message groups")
 			}
 		}
